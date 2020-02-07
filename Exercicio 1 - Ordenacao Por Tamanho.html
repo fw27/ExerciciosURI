@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<title>
+Feito por Diórgens Braga (07/02/2020)
+ | E-mail: 2diorgens7@gmail.com
+</title>
+<body>
+
+<h2>Ex 1. JavaScript - Ordenação por Tamanho (F5 para re/iniciar)</h2>
+
+
+
+<script language="javascript" type="text/javascript">
+
+var quantDsj = parseInt(prompt("AVISO: Tudo será imprimido na página ao concluir.\nInsira o número de casos de teste: "));
+var contarLoops = 0;
+var contarTeste = 1;
+var banco = [];
+var bancoT;
+    // Definir a Array para armazenar os inputs
+    // Escolher quantos casos de teste (Cada caso de teste poderá conter de 1 a 50 strings inclusive)
+    // Cada caso de teste poderá conter de 1 a 50 strings inclusive
+    // e cada uma das strings poderá conter entre 1 e 50 caracteres inclusive."
+
+
+do{
+var arr = []; 
+arr.length = 0; // Limpar a array a cada laço
+if((quantDsj >= 1) && (quantDsj <= 50)){
+var quantDsjConjunto = parseInt(prompt("Caso de Teste "+contarTeste+"\nInsira a quantidade de Strings por Array: ")); // Cada caso de teste poderá conter de 1 a 50 strings inclusive
+
+if(isNaN(quantDsjConjunto)){ //Checar se a inserção é um número
+ alert("Um número não foi inserido na quantidade de Strings por Array no Caso de Teste "+contarTeste);
+   break;
+}else{
+
+for (var i = 0; i < quantDsjConjunto; i++) {    // Loop quantDsj 
+
+
+
+var checarTamanhoString = prompt("Caso de Teste "+contarTeste+"\nInsira o conteúdo da String " + (i)+":");
+
+ if(checarTamanhoString.length < 50){ //Validação de tamanho máximo (50)
+ 
+ arr.push(checarTamanhoString); // Jogar o input dentro da array
+  i+1; 
+ 
+ }else if(checarTamanhoString.length >= 50){
+ alert("ERRO: O tamanho da string excedeu o tamanho máximo (50)!" + "\nConteúdo da String " +(i)+": "+checarTamanhoString);
+ break; // Quebrar Laço
+}else{
+ alert("ERRO: Caractere não reconhecido!");
+ break; //Quebrar Laço
+}
+}
+}
+
+
+arr.sort(function(a, b){return b.length - a.length}); // Ordenar por tamanho
+
+alert("Caso de Teste "+contarTeste+"\nArray ordenada por tamanho: " + arr.join(', '));     // Alertar o resultado
+contarTeste++; // Numerar os casos de teste para melhor direcionamento
+contarLoops++; // Numerar quantidade de loops para que não seja infinito
+
+banco += (arr.join(" ")+"<br>"); // Jogar array dentro de uma array de armazenamento
+
+JSON.parse(JSON.stringify(banco)); // Transformar a array de armazenamento em String
+document.body.innerHTML = ("<h2>Array Ordenada por Tamanho:<h2><h4>Casos de Teste: "+quantDsj+"</h4><br>"+banco); // Imprimir na página os resultados
+
+
+}else{
+alert("O número/caractere inserido na quantidade de casos de teste não é permitido!");
+break;
+}
+}while(contarLoops != quantDsj);
+</script>
+
+</body>
+</html>
